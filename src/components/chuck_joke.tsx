@@ -4,7 +4,7 @@
 import Joke from "../joke";
 
 const ChuckJoke: React.FC<Joke> = ({ id, joke }) => {
-  return <p>{joke}</p>;
+  return <p id={id}>{joke}</p>;
 };
 
 export default ChuckJoke;

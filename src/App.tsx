@@ -13,24 +13,24 @@ function App() {
   const [roundHouseKicks, setRoundHouseKicks] = useState<number>(300000);
   const [jokes, setJokes] = useState<Array<Joke>>([
     {
-      id: 1,
+      id: "1",
       joke: "Chuck Norris doesn’t read books. He stares them down until he gets the information he wants.",
     },
     {
-      id: 2,
+      id: "2",
       joke: "Time waits for no man. Unless that man is Chuck Norris.",
     },
     {
-      id: 3,
+      id: "3",
       joke: "The dinosaurs looked at Chuck Norris the wrong way once. You know what happened to them.",
     },
     {
-      id: 4,
+      id: "4",
       joke: "Chuck Norris does not own a stove, oven, or microwave, because revenge is a dish best served cold.",
     },
   ]);
 
-  const filteredJokes = jokes.filter((ele) => ele.id === 3)[0].joke;
+  const filteredJokes = jokes.find((ele) => ele.id === "3");
 
   return (
     <div className="App">
@@ -41,11 +41,14 @@ function App() {
       <ChuckInfo whalesSaved={whalesSaved} roundHouseKicks={roundHouseKicks} />
 
       {jokes.map((ele) => {
-        return <ChuckJoke id={ele.id} joke={ele.joke} />;
+        return <ChuckJoke key={ele.id} id={ele.id} joke={ele.joke} />;
       })}
 
       <h2>Filtered Jokes :</h2>
-      <ChuckJoke id={3} joke={filteredJokes} />
+      <ChuckJoke
+        id={filteredJokes ? filteredJokes.id : ""}
+        joke={filteredJokes ? filteredJokes.joke : ""}
+      />
     </div>
   );
 }
